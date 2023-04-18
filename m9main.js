@@ -3,17 +3,18 @@ $(document).ready(function(){
     })
     
     $("form").on("submit", function (e) {
-        console.log("submit")
         e.preventDefault()
-        const novaTarefa = $("mome-tarefa").val
-        const novaLinha = $("<li></li>")
-        $(`<a>${novaTarefa}</a>`).appendTo(novaLinha)
-        $(
-            `<div class="novas-tarefas">
-                <a>${novaTarefa}</a>
-            </div>
-        `).appendTo(novaLinha)
-        $(novaLinha).appendTo("ul")
+        const novaTarefa = $("#nome-tarefa").val()
+        const itemCriado = $(`<li>${novaTarefa}</li>`)
+        
+
+        $(novaTarefa).appendTo(itemCriado)
+        $(itemCriado).appendTo('ul')
+        $('#item-completado').val ('')
+
+        $(itemCriado).click(function() {
+            const itemCompleto = $(`<li><s>${itemCriado}</s><li>`)
+            $(itemCompleto).appendTo('#item-completado')
+        })    
     })
-    
 })
