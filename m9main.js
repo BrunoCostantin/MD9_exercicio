@@ -7,14 +7,13 @@ $(document).ready(function(){
         const novaTarefa = $("#nome-tarefa").val()
         const itemCriado = $(`<li>${novaTarefa}</li>`)
         
-
         $(novaTarefa).appendTo(itemCriado)
         $(itemCriado).appendTo('ul')
         $('#item-completado').val ('')
-
-        $(itemCriado).click(function() {
-            const itemCompleto = $(`<li><s>${itemCriado}</s><li>`)
-            $(itemCompleto).appendTo('#item-completado')
-        })    
     })
+    
+    $("ul").on("click", "li", function(){
+        $(this).css("text-decoration", "line-through")
+    }) 
+    
 })
